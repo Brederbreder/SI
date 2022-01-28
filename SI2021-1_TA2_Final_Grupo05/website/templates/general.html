@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}General{% endblock %}
+
+{% block content %}
+<br />
+<h1 align="center">Resumos Gerais</h1>
+<br />
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in value %}
+    <li class="list-group-item">
+    {{ note.data }}
+    <br />
+        {% for user in users %}
+            {% if user.id == note.user_id %}
+                <br />
+                {% print('- ') %}
+                {{ user.first_name }}
+                {{ note.evaluation }}
+            {% endif %}
+        {% endfor %}
+        <br />
+        <br />
+        <button type="button" class="btn btn-success" onClick="">
+            Like
+        </button>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
